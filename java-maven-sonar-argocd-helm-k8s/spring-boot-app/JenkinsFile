@@ -28,18 +28,7 @@ pipeline {
     '''
   }
 }
-sh '''
-export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
-export PATH=$JAVA_HOME/bin:$PATH
 
-echo "Using Java:"
-java -version
-
-echo "Using Maven:"
-mvn -version
-
-mvn clean verify sonar:sonar
-'''
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'
