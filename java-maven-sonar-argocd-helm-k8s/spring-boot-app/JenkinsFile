@@ -12,6 +12,22 @@ pipeline {
         //git branch: 'main', url: 'https://github.com/sainaveen-os/Jenkins-Zero-To-Hero'
       }
     }
+    stage('Debug Java') {
+  steps {
+    sh '''
+      echo "===== SYSTEM JAVA ====="
+      which java
+      readlink -f $(which java)
+      java -version
+
+      echo "===== MAVEN JAVA ====="
+      mvn -version
+
+      echo "===== JAVA_HOME ====="
+      echo $JAVA_HOME
+    '''
+  }
+}
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'
